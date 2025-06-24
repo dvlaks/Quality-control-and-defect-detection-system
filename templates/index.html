@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Quality Control Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>AI-Powered Quality Inspection</h1>
+        <p>Upload product images for automated defect detection.</p>
+    </header>
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" id="upload-form">
+            
+            <label for="product_type">1. Select Product Category:</label>
+            <select name="product_type" id="product_type" required>
+                <option value="" disabled selected>-- Please choose a product --</option>
+                {% for product in available_products %}
+                <option value="{{ product }}">{{ product.replace('_', ' ').title() }}</option>
+                {% endfor %}
+            </select>
+            
+            <label for="file">2. Upload Image for Inspection:</label>
+            <input type="file" name="file" id="file" accept="image/*" required>
+            
+            <input type="submit" value="Inspect Product">
+        </form>
+        
+        <div class="loader" id="loader"></div>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+
+    <script>
+        // Optional: Show loader on form submit
+        document.getElementById('upload-form').addEventListener('submit', function() {
+            // Basic validation before showing loader
+            if (document.getElementById('product_type').value && document.getElementById('file').files.length > 0) {
+                 document.getElementById('loader').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

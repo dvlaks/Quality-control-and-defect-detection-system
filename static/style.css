@@ -1,0 +1,217 @@
+/* static/style.css */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    background-color: #3498db; /* Header background */
+    color: white;
+    border-radius: 12px 12px 0 0; /* Rounded top corners if container is separate */
+}
+
+header h1 {
+    color: #ffffff; /* White text for header */
+    font-size: 2.2em; /* Slightly smaller */
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #ecf0f1; /* Lighter text for subtitle */
+    font-size: 1.1em;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 30px 0;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #34495e;
+}
+
+select,
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1.2rem;
+    border: 1px solid #ccd1d9; /* Softer border */
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: #fdfdfd;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    background-color: #5dade2;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #4b9ac8;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    margin-top: 1.5rem;
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+.error {
+    color: #c0392b;
+    background-color: #fdedec; /* Lighter red background */
+    border: 1px solid #f5b7b1; /* Softer red border */
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+/* Results Page Specific Styles */
+.verdict-container {
+    margin: 20px auto;
+    padding: 20px 30px;
+    border-radius: 10px;
+    max-width: 850px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    border-width: 1px; /* Thinner border */
+    border-style: solid;
+}
+
+.result-good {
+    background-color: #e8f5e9; 
+    color: #2e7d32;
+    border-color: #a5d6a7;
+}
+
+.result-defective {
+    background-color: #ffebee;
+    color: #c62828;
+    border-color: #ef9a9a;
+}
+
+.verdict-container h1 {
+    margin-top: 0;
+    font-size: 1.8em;
+    font-weight: 600;
+}
+.verdict-container p {
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 30px;
+    max-width: 900px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+.results-grid .grid-item {
+    background: #fff;
+    padding: 25px; /* More padding */
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+.results-grid .grid-item h3 {
+    margin-top: 0;
+    color: #34495e;
+    font-size: 1.3em;
+    border-bottom: 1px solid #e0e0e0; /* Lighter border */
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.results-grid img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #f0f0f0; /* Very light image border */
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    text-decoration: none;
+    background-color: #5dade2;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.back-link:hover {
+    background-color: #4b9ac8;
+}
+
+.loader {
+    border: 5px solid #f0f0f0; 
+    border-top: 5px solid #3498db; 
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+    display: none; 
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

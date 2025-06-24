@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspection Result - AI Quality Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Inspection Report</h1>
+    </header>
+
+    <div class="verdict-container {{ 'result-defective' if defective else 'result-good' }}">
+        <h1>Verdict: {{ verdict }}</h1>
+        <p><strong>Analysis Score:</strong> {{ error_score|round(6) }} 
+           (System Threshold for {{ product_type_display.replace('_', ' ').title() if product_type_display else 'Selected Product' }}: {{ threshold }})
+        </p>
+    </div>
+
+    <div class="results-grid">
+        <div class="grid-item">
+            <h3>Original Uploaded Image</h3>
+            <img src="{{ url_for('static', filename=original_img) }}" alt="Original Image">
+        </div>
+        <div class="grid-item">
+            <h3>Defect Report Heatmap</h3>
+            <p>Brighter/hotter areas may indicate anomalies.</p>
+            <img src="{{ url_for('static', filename=report_img) }}" alt="Defect Heatmap">
+        </div>
+        
+        {% if ai_summary %} {# Check if ai_summary was passed #}
+        <div class="grid-item" style="grid-column: 1 / -1; text-align: left;">
+            <h3>AI Analyst Summary</h3>
+            <p style="white-space: pre-wrap; font-size: 0.95em; line-height: 1.6;">{{ ai_summary }}</p>
+        </div>
+        {% endif %}
+    </div>
+    
+    <a href="{{ url_for('home') }}" class="back-link">Inspect Another Product</a>
+
+</body>
+</html>
